@@ -1,0 +1,39 @@
+{
+    "name": "laravelflare/pages",
+    "description": "Pages Module for Flare CMS",
+    "keywords": [
+        "Laravel", "Flare", "CMS", "Pages", "Module"
+    ],
+    "homepage": "https://github.com/laravelflare/pages",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Laravel Flare",
+            "homepage": "https://github.com/laravelflare"
+        },
+        {
+            "name": "Aden Fraser",
+            "email": "aden@jacobbailey.com",
+            "homepage": "https://github.com/AdenFraser"
+        }
+    ],
+    "require": {
+        "laravelflare/flare": "0.2.x",
+        "laravelflare/cms": "dev-master"
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.9.1",
+        "phpunit/phpunit": "~4.0",
+        "orchestra/testbench": "~3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelFlare\\Cms\\": "src/Pages"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LaravelFlare\\Cms\\Tests\\": "tests/"
+        }
+    }
+}
