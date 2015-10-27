@@ -2,6 +2,8 @@
 
 namespace LaravelFlare\Pages;
 
+use Illuminate\Support\ServiceProvider;
+
 class PageModuleProvider extends ServiceProvider
 {
     /**
