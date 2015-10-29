@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "LaravelFlare\\Cms\\": "src/Pages"
+            "LaravelFlare\\Pages\\": "src/Pages"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LaravelFlare\\Cms\\Tests\\": "tests/"
+            "LaravelFlare\\Pages\\Tests\\": "tests/"
         }
     }
 }
