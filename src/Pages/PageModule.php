@@ -13,7 +13,7 @@ class PageModule extends ModuleAdmin
      *
      * @var string
      */
-    protected static $icon = 'file-text-o';
+    protected static $icon = 'file-o';
 
     /**
      * Title of Admin Section.
