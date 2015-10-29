@@ -4,13 +4,17 @@ namespace LaravelFlare\Pages;
 
 use Illuminate\Support\ServiceProvider;
 
-class PageModuleProvider extends ServiceProvider
+class PageServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__.'/Database/Migrations' => base_path('database/migrations'),
+        ]);
+
         $this->registerBladeOperators();
     }
 
