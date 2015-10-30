@@ -21,11 +21,11 @@ class PageModule extends ModuleAdmin
      * @var string
      */
     protected static $title = 'Page';
-    
+
     /**
-     * The Module Admin Default View.
-     *
+     * The Controller to be used by the Pages Module.
+     * 
      * @var string
      */
-    protected static $view = 'admin.pages.index';
+    protected static $controller = '\LaravelFlare\Pages\Http\Controllers\PagesAdminController';
 }

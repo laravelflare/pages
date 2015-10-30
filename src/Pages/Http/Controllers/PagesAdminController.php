@@ -1,7 +1,8 @@
 <?php
 
-namespace LaravelFlare\Flare\Admin\Modules;
+namespace LaravelFlare\Pages\Http\Controllers;
 
+use LaravelFlare\Pages\Page;
 use LaravelFlare\Flare\Admin\AdminManager;
 use LaravelFlare\Flare\Admin\Modules\ModuleAdminController;
 
@@ -36,7 +37,12 @@ class PagesAdminController extends ModuleAdminController
      */
     public function getIndex()
     {
-        return view($this->admin->getView(), $this->admin->getViewData());
+        return view('flare::admin.pages.index', ['pages' => Page::paginate()]);
+    }
+
+    public function getCreate()
+    {
+        return view('flare::admin.pages.create');
     }
 
     /**

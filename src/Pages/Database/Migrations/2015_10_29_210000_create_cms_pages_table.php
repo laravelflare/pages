@@ -15,6 +15,7 @@ class CreateCmsPagesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('content');
+            $table->timestamps();
         });
     }
 
