@@ -44,10 +44,14 @@
     </div>
 
     <div class="box-footer">
-        <button class="btn btn-danger" value="trash" type="submit">
+
+        @if ($page->id)
+        <a href="{{ $moduleAdmin::currentUrl('delete/'.$page->id) }}" class="btn btn-danger" value="trash">
             <i class="fa fa-trash"></i>
             Trash
-        </button>
+        </a>
+        @endif
+
         <div class="btn-group pull-right">
             <button class="btn btn-info" type="submit" name="submit" action="save-publish">
                 Save &amp; Publish
@@ -63,6 +67,7 @@
                 <li><a href="#">Unpublish</a></li>
             </ul>
         </div>
+        
     </div>
     
 </div>

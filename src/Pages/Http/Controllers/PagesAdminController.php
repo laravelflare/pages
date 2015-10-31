@@ -92,6 +92,34 @@ class PagesAdminController extends ModuleAdminController
     }
 
     /**
+     * Delete a Page.
+     *
+     * @param int $page_id
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function getDelete($page_id)
+    {
+        return view('flare::admin.pages.delete', ['page' => Page::findOrFail($page_id)]);
+    }
+
+    /**
+     * Process Delete Page Request.
+     *
+     * @param int $page_id
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postDelete($page_id)
+    {
+        $page = Page::findOrFail($page_id);
+        $page->slug()->delete();
+        $page->delete();
+
+        return redirect($this->admin->currentUrl())->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'The page was successfully removed.', 'dismissable' => false]]);
+    }
+
+    /**
      * Method is called when the appropriate controller
      * method is unable to be found or called.
      * 
