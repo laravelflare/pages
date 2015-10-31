@@ -9,6 +9,10 @@
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border">
+                    <h3 class="box-title">
+                        All Pages
+                    </h3>
+                    {{--
                     <div class="btn-group">
                         <button class="btn btn-default btn-flat" type="button">
                             All Pages
@@ -46,6 +50,7 @@
                             </li>
                         </ul>
                     </div>
+
                     <div class="btn-group pull-right">
                         <div style="width: 350px;" class="input-group">
                             <div class="input-group-btn">
@@ -66,6 +71,7 @@
                             </div>
                         </div>
                     </div>
+                    --}}
                 </div>
                 <div class="box-body no-padding">
                     <table class="table table-striped">
@@ -77,18 +83,22 @@
                                 <th>
                                     Name
                                 </th>
+                                {{--
                                 <th>
                                     Author
                                 </th>
+                                --}}
                                 <th>
                                     Created On
                                 </th>
                                 <th>
                                     Updated At
                                 </th>
+                                {{--
                                 <th>
                                     Status
                                 </th>
+                                --}}
                                 <th></th>
                             </tr>
                         </thead>
@@ -102,18 +112,22 @@
                                     <td>
                                         {{ $page->name }}
                                     </td>
+                                    {{--
                                     <td>
                                         {{ $page->author }}
                                     </td>
+                                    --}}
                                     <td>
                                         {{ $page->created_at->diffForHumans() }}
                                     </td>
                                     <td>
                                         {{ $page->updated_at->diffForHumans() }}
                                     </td>
+                                    {{--
                                     <td>
                                         {{ $page->status }}
                                     </td>
+                                    --}}
                                     <td>
                                         <a class="btn btn-success btn-xs" href="{{ $page->link }}">
                                             <i class="fa fa-eye"></i>

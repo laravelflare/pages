@@ -23,6 +23,8 @@
                 </div>
             </div>
         </div>
+        @else
+        <p>Not yet published</p>
         @endif
 
         @if ($page->updated_at)
@@ -56,6 +58,7 @@
             <button class="btn btn-info" type="submit" name="submit" action="save-publish">
                 Save &amp; Publish
             </button>
+            {{--
             <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">
                 <span class="caret"></span>
                 <span class="sr-only">Toggle Options</span>
@@ -66,8 +69,9 @@
                 <li><a href="#">Save &amp; Unpublish</a></li>
                 <li><a href="#">Unpublish</a></li>
             </ul>
+            --}}
         </div>
-        
+
     </div>
     
 </div>
