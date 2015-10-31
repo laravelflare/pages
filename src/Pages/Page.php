@@ -23,7 +23,7 @@ class Page extends Model implements Sluggable
      *
      * @var array
      */
-    protected $fillable = ['name', 'content', 'is_home'];
+    protected $fillable = ['name', 'content'];
 
     /**
      * The attributes that should be mutated to dates.
