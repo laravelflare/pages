@@ -4,26 +4,24 @@
 
 @section('content')
 
-<div class="box box-default">
+<div class="row">
 
-    <div class="row">
-        <div class="col-md-9">
-            <div class="box box-default">
-                <div class="box-header with-border">
-                    <i class="fa fa-warning"></i>
-                    <h3 class="box-title">Alerts</h3>
-                </div>
-                <div class="box-body">
-                    
-                </div>
+    <div class="col-md-9">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                @include('flare::admin.pages.includes.title-and-slug')
             </div>
-        </div>
-        <div class="col-md-3">
-            <div class="">
+            <div class="box-body">
+                @include('flare::admin.pages.includes.editor')
             </div>
         </div>
     </div>
-   
+
+    <div class="col-md-3">
+        @include('flare::admin.pages.includes.publish')
+        @include('flare::admin.pages.includes.settings')
+    </div>
+
 </div>
 
 @stop

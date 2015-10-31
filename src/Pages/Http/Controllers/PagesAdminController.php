@@ -31,7 +31,9 @@ class PagesAdminController extends ModuleAdminController
     }
 
     /**
-     * Index page for Module.
+     * Index Page for Module.
+     *
+     * Lists the current pages in the system.
      * 
      * @return \Illuminate\Http\Response
      */
@@ -40,9 +42,24 @@ class PagesAdminController extends ModuleAdminController
         return view('flare::admin.pages.index', ['pages' => Page::paginate()]);
     }
 
+    /**
+     * Create a new Page.
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function getCreate()
     {
-        return view('flare::admin.pages.create');
+        return view('flare::admin.pages.create', ['page' => new Page()]);
+    }
+
+    /**
+     * Edit a Page.
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function getEdit($page_id)
+    {
+        return view('flare::admin.pages.edit', ['page' => Page::findOrFail($page_id)]);
     }
 
     /**
