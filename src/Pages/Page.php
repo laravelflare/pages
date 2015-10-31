@@ -22,4 +22,16 @@ class Page extends Model
      * @var array
      */
     protected $fillable = ['name', 'content'];
+    
+    /**
+     * Provides a Link Accessor
+     * 
+     * @return string
+     */
+    public function getLinkAttribute()
+    {
+        if ($this->slug) {
+            return url($this->slug);
+        }
+    }
 }
