@@ -78,6 +78,9 @@
                                     Name
                                 </th>
                                 <th>
+                                    Author
+                                </th>
+                                <th>
                                     Created On
                                 </th>
                                 <th>
