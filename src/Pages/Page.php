@@ -2,14 +2,16 @@
 
 namespace LaravelFlare\Pages;
 
+use LaravelFlare\Cms\Views\Viewable;
 use LaravelFlare\Cms\Slugs\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use LaravelFlare\Cms\Views\ViewableModel;
 use LaravelFlare\Cms\Slugs\SluggableModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Page extends Model implements Sluggable
+class Page extends Model implements Sluggable, Viewable
 {
-    use SluggableModel, SoftDeletes;
+    use SluggableModel, ViewableModel, SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -31,6 +33,13 @@ class Page extends Model implements Sluggable
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Default Page View
+     *
+     * @return string
+     */
+    protected $view = 'flare::pages.index';
 
     /**
      * Page belongs to Author.
