@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "laravelflare/flare": "dev-master",
+        "laravelflare/flare": "0.2.x-dev",
         "laravelflare/cms": "dev-master"
     },
     "require-dev": {
