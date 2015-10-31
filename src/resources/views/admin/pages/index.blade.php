@@ -47,7 +47,7 @@
                                     Created On
                                 </th>
                                 <th>
-                                    Created At
+                                    Updated At
                                 </th>
                                 <th></th>
                             </tr>
