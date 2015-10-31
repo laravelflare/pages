@@ -4,6 +4,8 @@ namespace LaravelFlare\Pages\Http\Controllers;
 
 use LaravelFlare\Pages\Page;
 use LaravelFlare\Flare\Admin\AdminManager;
+use LaravelFlare\Pages\Http\Requests\PageEditRequest;
+use LaravelFlare\Pages\Http\Requests\PageCreateRequest;
 use LaravelFlare\Flare\Admin\Modules\ModuleAdminController;
 
 class PagesAdminController extends ModuleAdminController
@@ -53,6 +55,18 @@ class PagesAdminController extends ModuleAdminController
     }
 
     /**
+     * Processes a new Page Request.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postCreate(PageCreateRequest $request)
+    {
+        $page = Page::create($request->only(['name', 'content']));
+
+        return redirect($this->admin->currentUrl('edit/'.$page->id))->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'Your page was successfully created.', 'dismissable' => false]]);
+    }
+
+    /**
      * Edit a Page.
      * 
      * @return \Illuminate\Http\Response
@@ -60,6 +74,18 @@ class PagesAdminController extends ModuleAdminController
     public function getEdit($page_id)
     {
         return view('flare::admin.pages.edit', ['page' => Page::findOrFail($page_id)]);
+    }
+
+    /**
+     * Processes a new Page Request.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postEdit(PageEditRequest $request, $page_id)
+    {
+        $page = Page::findOrFail($page_id)->fill($request->only(['name', 'content']))->save();
+
+        return redirect($this->admin->currentUrl('edit/'.$page_id))->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'Your page was successfully updated.', 'dismissable' => false]]);
     }
 
     /**
