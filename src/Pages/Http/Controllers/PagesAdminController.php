@@ -62,6 +62,7 @@ class PagesAdminController extends ModuleAdminController
     public function postCreate(PageCreateRequest $request)
     {
         $page = Page::create($request->only(['name', 'content']));
+        $page->saveSlug($request->input('slug'));
 
         return redirect($this->admin->currentUrl('edit/'.$page->id))->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'Your page was successfully created.', 'dismissable' => false]]);
     }
@@ -83,7 +84,9 @@ class PagesAdminController extends ModuleAdminController
      */
     public function postEdit(PageEditRequest $request, $page_id)
     {
-        $page = Page::findOrFail($page_id)->fill($request->only(['name', 'content']))->save();
+        $page = Page::findOrFail($page_id)->fill($request->only(['name', 'content']));
+        $page->save();
+        $page->saveSlug($request->input('slug'));
 
         return redirect($this->admin->currentUrl('edit/'.$page_id))->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'Your page was successfully updated.', 'dismissable' => false]]);
     }

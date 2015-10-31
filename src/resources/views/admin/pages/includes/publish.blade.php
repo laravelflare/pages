@@ -49,7 +49,7 @@
             Trash
         </button>
         <div class="btn-group pull-right">
-            <button class="btn btn-info" type="button">
+            <button class="btn btn-info" type="submit" name="submit" action="save-publish">
                 Save &amp; Publish
             </button>
             <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" type="button">

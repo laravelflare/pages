@@ -13,16 +13,18 @@
             </strong>
             {{ url() }}/
         </span>
-        <input type="text" class="form-control" value="{{ old('slug', $page->slug) }}" readonly>
+        <input type="text" class="form-control" name="slug" value="{{ old('slug', $page->slug) }}" readonly>
         <span class="input-group-btn">
             <a href="#" class="btn btn-default btn-flat">
                 Edit
             </a>
         </span>
+        @if ($page->link)
         <span class="input-group-btn">
-            <a href="#" class="btn btn-default btn-flat">
+            <a href="{{ url($page->link) }}" class="btn btn-default btn-flat">
                 View Page
             </a>
         </span>
+        @endif
     </div>
 </div>

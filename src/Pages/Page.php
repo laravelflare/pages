@@ -2,10 +2,11 @@
 
 namespace LaravelFlare\Pages;
 
+use LaravelFlare\Cms\Slugs\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use LaravelFlare\Cms\Slugs\SluggableModel;
 
-class Page extends Model
+class Page extends Model implements Sluggable
 {
     use SluggableModel;
 
