@@ -41,7 +41,50 @@ class PagesAdminController extends ModuleAdminController
      */
     public function getIndex()
     {
-        return view('flare::admin.pages.index', ['pages' => Page::paginate()]);
+        return view('flare::admin.pages.index', [
+                                                    'pages' => Page::paginate(),
+                                                    'totals' => [
+                                                        'all' => Page::get()->count(),
+                                                        'with_trashed' => Page::withTrashed()->get()->count(),
+                                                        'only_trashed' => Page::onlyTrashed()->get()->count(),
+                                                    ],
+                                                ]
+                                            );
+    }
+
+    /**
+     * Lists Trashed Pages.
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function getTrashed()
+    {
+        return view('flare::admin.pages.trashed', [
+                                                    'pages' => Page::onlyTrashed()->paginate(),
+                                                    'totals' => [
+                                                        'all' => Page::get()->count(),
+                                                        'with_trashed' => Page::withTrashed()->get()->count(),
+                                                        'only_trashed' => Page::onlyTrashed()->get()->count(),
+                                                    ],
+                                                ]
+                                            );
+    }
+
+    /**
+     * List All Pages inc Trashed.
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function getAll()
+    {
+        return view('flare::admin.pages.all', ['pages' => Page::withTrashed()->paginate(),
+                                                    'totals' => [
+                                                        'all' => Page::get()->count(),
+                                                        'with_trashed' => Page::withTrashed()->get()->count(),
+                                                        'only_trashed' => Page::onlyTrashed()->get()->count(),
+                                                    ],
+                                                ]
+                                            );
     }
 
     /**
@@ -75,7 +118,7 @@ class PagesAdminController extends ModuleAdminController
      */
     public function getEdit($page_id)
     {
-        return view('flare::admin.pages.edit', ['page' => Page::findOrFail($page_id)]);
+        return view('flare::admin.pages.edit', ['page' => Page::withTrashed()->findOrFail($page_id)]);
     }
 
     /**
@@ -85,7 +128,7 @@ class PagesAdminController extends ModuleAdminController
      */
     public function postEdit(PageEditRequest $request, $page_id)
     {
-        $page = Page::findOrFail($page_id)->fill($request->only(['name', 'content']));
+        $page = Page::withTrashed()->findOrFail($page_id)->fill($request->only(['name', 'content']));
         $page->author()->associate(\Auth::user());
         $page->save();
         $page->saveSlug($request->input('slug'));
@@ -102,7 +145,7 @@ class PagesAdminController extends ModuleAdminController
      */
     public function getDelete($page_id)
     {
-        return view('flare::admin.pages.delete', ['page' => Page::findOrFail($page_id)]);
+        return view('flare::admin.pages.delete', ['page' => Page::withTrashed()->findOrFail($page_id)]);
     }
 
     /**
@@ -114,11 +157,44 @@ class PagesAdminController extends ModuleAdminController
      */
     public function postDelete($page_id)
     {
-        $page = Page::findOrFail($page_id);
-        $page->slug()->delete();
-        $page->delete();
+        $page = Page::withTrashed()->findOrFail($page_id);
 
-        return redirect($this->admin->currentUrl())->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'The page was successfully removed.', 'dismissable' => false]]);
+        if ($page->trashed()) {
+            $page->slug()->delete();
+            $page->forceDelete();
+            $action = 'deleted';
+        } else {
+            $page->delete();
+            $action = 'trashed';
+        }
+
+        return redirect($this->admin->currentUrl())->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'The page was successfully '.$action.'.', 'dismissable' => false]]);
+    }
+
+    /**
+     * Restore a Page.
+     *
+     * @param int $page_id
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function getRestore($page_id)
+    {
+        return view('flare::admin.pages.restore', ['page' => Page::onlyTrashed()->findOrFail($page_id)]);
+    }
+
+    /**
+     * Process Restore Page Request.
+     *
+     * @param int $page_id
+     * 
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postRestore($page_id)
+    {
+        $page = Page::onlyTrashed()->findOrFail($page_id)->restore();
+
+        return redirect($this->admin->currentUrl())->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'The page was successfully restored.', 'dismissable' => false]]);
     }
 
     /**

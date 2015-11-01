@@ -35,7 +35,7 @@ class Page extends Model implements Sluggable, Viewable
     protected $dates = ['deleted_at'];
 
     /**
-     * Default Page View
+     * Default Page View.
      *
      * @return string
      */
@@ -50,9 +50,9 @@ class Page extends Model implements Sluggable, Viewable
     {
         return $this->belongsTo(config('auth.model'), 'author_id');
     }
-    
+
     /**
-     * Provides the Author Name Accessor
+     * Provides the Author Name Accessor.
      * 
      * @return string
      */
@@ -64,7 +64,7 @@ class Page extends Model implements Sluggable, Viewable
     }
 
     /**
-     * Provides the Link Accessor
+     * Provides the Link Accessor.
      * 
      * @return string
      */

@@ -2,8 +2,6 @@
 
 namespace LaravelFlare\Pages\Policies;
 
-use LaravelFlare\Flare\Contracts\ModelAdminPoliceable;
-
 class PagePolicy
 {
     /**

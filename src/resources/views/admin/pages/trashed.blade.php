@@ -10,9 +10,9 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="btn-group">
-                        <a href="{{ $moduleAdmin::currentUrl() }}" class="btn btn-default btn-flat">
-                            All Pages
-                            <span class="badge bg-green" style="margin-left: 15px">{{ $totals['all'] }}</span>
+                        <a href="{{ $moduleAdmin::currentUrl('trashed') }}" class="btn btn-default btn-flat">
+                            Trashed Only
+                            <span class="badge bg-red" style="margin-left: 15px">{{ $totals['only_trashed'] }}</span>
                         </a>
                         <button data-toggle="dropdown" class="btn btn-default btn-flat dropdown-toggle" type="button">
                             <span class="caret"></span>
@@ -20,19 +20,19 @@
                         </button>
                         <ul role="menu" class="dropdown-menu">
                             <li>
+                                <a href="{{ $moduleAdmin::currentUrl() }}">
+                                    <span style="display:inline-block; width: 100px;">
+                                        All Pages
+                                    </span>
+                                    <span class="badge bg-green">{{ $totals['all'] }}</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="{{ $moduleAdmin::currentUrl('all') }}">
                                     <span style="display:inline-block; width: 100px;">
                                         With Trashed
                                     </span>
                                     <span class="badge bg-yellow">{{ $totals['with_trashed'] }}</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ $moduleAdmin::currentUrl('trashed') }}">
-                                    <span style="display:inline-block; width: 100px;">
-                                        Trashed Only
-                                    </span>
-                                    <span class="badge bg-red">{{ $totals['only_trashed'] }}</span>
                                 </a>
                             </li>
                             {{--

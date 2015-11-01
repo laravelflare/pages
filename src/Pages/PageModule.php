@@ -5,7 +5,7 @@ namespace LaravelFlare\Pages;
 use LaravelFlare\Flare\Admin\Modules\ModuleAdmin;
 
 class PageModule extends ModuleAdmin
-{    
+{
     /**
      * Admin Section Icon.
      *

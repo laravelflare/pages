@@ -12,9 +12,19 @@
     </div>
     <form action="" method="post">
         <div class="box-body">
-            <div class="alert alert-danger">
-                <i class="icon fa fa-danger"></i>
-                Are you sure you wish to delete this Page?
+            <div class="alert alert-danger no-margin">
+                <i class="icon fa fa-exclamation-triangle"></i>
+                @if ($page->trashed())
+                    <strong>Are you sure you wish to permanently delete this page?</strong>
+                    <p>
+                        Once a page is permanently deleted it can no longer be recovered.
+                    </p>
+                @else
+                    <strong>Are you sure you wish to trash this Page?</strong>
+                    <p>
+                        The page will be sent to the trash, where it can either be restored or deleted permanently.
+                    </p>
+                @endif 
             </div>
         </div>
         <div class="box-footer">
@@ -24,7 +34,11 @@
             </a>
             <button class="btn btn-danger" type="submit">
                 <i class="fa fa-trash"></i>
+                @if ($page->trashed())
                 Delete Page
+                @else 
+                Trash Page
+                @endif
             </button>
         </div>
     </form>
