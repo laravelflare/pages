@@ -50,10 +50,12 @@
                     </td>
                     --}}
                     <td>
+                        @if (!$page->trashed())
                         <a class="btn btn-success btn-xs" href="{{ $page->link }}">
                             <i class="fa fa-eye"></i>
                             View
                         </a>
+                        @endif
                         <a class="btn btn-primary btn-xs" href="{{ $moduleAdmin::currentUrl('edit/'.$page->id) }}">
                             <i class="fa fa-edit"></i>
                             Edit
