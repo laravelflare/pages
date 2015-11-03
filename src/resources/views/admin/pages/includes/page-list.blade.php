@@ -71,6 +71,11 @@
                             <i class="fa fa-undo"></i>
                             Restore
                         </a>
+                        @else
+                        <a class="btn btn-warning btn-xs" href="{{ $moduleAdmin::currentUrl('clone/'.$page->id) }}">
+                            <i class="fa fa-copy"></i>
+                            Clone
+                        </a>
                         @endif
                     </td>
                 </tr>

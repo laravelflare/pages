@@ -198,6 +198,20 @@ class PagesAdminController extends ModuleAdminController
     }
 
     /**
+     * Clone a Page.
+     *
+     * @param int $page_id
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function getClone($page_id)
+    {
+        Page::findOrFail($page_id)->replicate()->save();
+
+        return redirect($this->admin->currentUrl())->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'The page was successfully cloned.', 'dismissable' => false]]);
+    }
+
+    /**
      * Method is called when the appropriate controller
      * method is unable to be found or called.
      * 
