@@ -19,7 +19,7 @@
                 Edit
             </a>
         </span>
-        @if ($page->link)
+        @if ($page->link && !$page->trashed())
         <span class="input-group-btn">
             <a href="{{ url($page->link) }}" class="btn btn-default btn-flat">
                 View Page
