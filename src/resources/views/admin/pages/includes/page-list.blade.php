@@ -58,14 +58,6 @@
                             <i class="fa fa-edit"></i>
                             Edit
                         </a>
-                        <a class="btn btn-danger btn-xs" href="{{ $moduleAdmin::currentUrl('delete/'.$page->id) }}">
-                            <i class="fa fa-trash"></i>
-                            @if ($page->trashed())
-                            Delete
-                            @else 
-                            Trash
-                            @endif
-                        </a>
                         @if ($page->trashed())
                         <a class="btn btn-info btn-xs" href="{{ $moduleAdmin::currentUrl('restore/'.$page->id) }}">
                             <i class="fa fa-undo"></i>
@@ -77,6 +69,14 @@
                             Clone
                         </a>
                         @endif
+                        <a class="btn btn-danger btn-xs" href="{{ $moduleAdmin::currentUrl('delete/'.$page->id) }}">
+                            <i class="fa fa-trash"></i>
+                            @if ($page->trashed())
+                            Delete
+                            @else 
+                            Trash
+                            @endif
+                        </a>
                     </td>
                 </tr>
             @endforeach
