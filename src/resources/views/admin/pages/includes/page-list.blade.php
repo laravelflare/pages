@@ -67,7 +67,7 @@
                         </a>
                         @else
                         <a class="btn btn-warning btn-xs" href="{{ $moduleAdmin::currentUrl('clone/'.$page->id) }}">
-                            <i class="fa fa-copy"></i>
+                            <i class="fa fa-clone"></i>
                             Clone
                         </a>
                         @endif
