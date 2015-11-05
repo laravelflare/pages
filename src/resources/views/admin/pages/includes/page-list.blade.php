@@ -49,7 +49,7 @@
                         {{ $page->status }}
                     </td>
                     --}}
-                    <td>
+                    <td style="width: 1%; white-space:nowrap">
                         @if (!$page->trashed())
                         <a class="btn btn-success btn-xs" href="{{ $page->link }}">
                             <i class="fa fa-eye"></i>
