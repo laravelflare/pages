@@ -42,6 +42,20 @@ class Page extends Model implements Sluggable, Viewable
     protected $view = 'flare::pages.index';
 
     /**
+     * Page View.
+     * 
+     * @return string
+     */
+    public function view()
+    {   
+        if (!$this->template || !view()->exists($this->template)) {
+            return $this->view;
+        }
+
+        return $this->template;
+    }
+
+    /**
      * Page belongs to Author.
      * 
      * @return
