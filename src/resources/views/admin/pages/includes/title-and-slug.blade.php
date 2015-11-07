@@ -13,9 +13,9 @@
             </strong>
             {{ url() }}/
         </span>
-        <input type="text" class="form-control" name="slug" value="{{ old('slug', $page->slug) }}" readonly>
+        <input type="text" class="form-control" name="slug" value="{{ old('slug', $page->slug) }}" id="slug-modify-field" readonly>
         <span class="input-group-btn">
-            <a href="#" class="btn btn-default btn-flat">
+            <a href="#" class="btn btn-default btn-flat" id="slug-modify-button">
                 Edit
             </a>
         </span>
@@ -28,3 +28,24 @@
         @endif
     </div>
 </div>
+
+@section('enqueued-js')
+<script>
+$(document).ready(function(){
+    $('#slug-modify-button').click(function(e){
+        e.preventDefault();
+
+        $field = $('#slug-modify-field');
+
+        if ($field.prop('readonly')) {
+            $field.prop('readonly', false);
+            $(this).text('Set');
+            return;
+        }
+
+        $field.prop('readonly', true);
+        $(this).text('Edit');
+    });
+});
+</script>
+@append
