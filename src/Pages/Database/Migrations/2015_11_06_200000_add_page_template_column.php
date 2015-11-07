@@ -9,7 +9,7 @@ class AddPageTemplateColumn extends Migration
      */
     public function up()
     {
-        Schema::table('cms_pages', function ($table) {
+        Schema::table('flare_cms_pages', function ($table) {
             $table->string('template')->nullable()->after('author_id');
         });
     }
@@ -19,7 +19,7 @@ class AddPageTemplateColumn extends Migration
      */
     public function down()
     {
-        Schema::table('cms_pages', function ($table) {
+        Schema::table('flare_cms_pages', function ($table) {
             $table->dropColumn('template');
         });
     }

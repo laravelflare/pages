@@ -10,7 +10,7 @@ class CreateCmsPagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cms_pages', function (Blueprint $table) {
+        Schema::create('flare_cms_pages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
@@ -24,6 +24,6 @@ class CreateCmsPagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cms_pages');
+        Schema::drop('flare_cms_pages');
     }
 }
