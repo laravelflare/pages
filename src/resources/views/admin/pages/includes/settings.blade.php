@@ -6,20 +6,14 @@
     <div class="box-body">
         <div class="form-group">
             <label>Page Parent:</label>
-            <select class="form-control">
-                <option>Homepage</option>
-                <option>About Us</option>
-                <option>Portfolio</option>
-                <option>Contact</option>
+            <select class="form-control" name="parent">
+                <option></option>
             </select>
         </div>
         <div class="form-group">
             <label>Template:</label>
-            <select class="form-control">
-                <option>Default</option>
-                <option>Single Column</option>
-                <option>Left Sidebar</option>
-                <option>Right Sidebar</option>
+            <select class="form-control" name="template">
+                <option></option>
             </select>
         </div>
     </div>
