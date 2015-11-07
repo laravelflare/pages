@@ -18,7 +18,7 @@ class Page extends Model implements Sluggable, Viewable
      *
      * @var string
      */
-    protected $table = 'cms_pages';
+    protected $table = 'flare_cms_pages';
 
     /**
      * The attributes that are mass assignable.
