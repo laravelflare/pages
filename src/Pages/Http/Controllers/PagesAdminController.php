@@ -104,7 +104,7 @@ class PagesAdminController extends ModuleAdminController
      */
     public function postCreate(PageCreateRequest $request)
     {
-        $page = Page::create($request->only(['name', 'content']));
+        $page = Page::create($request->only(['name', 'content', 'template']));
         $page->saveSlug($request->input('slug'));
         $page->author()->associate(\Auth::user())->save();
 
@@ -128,7 +128,7 @@ class PagesAdminController extends ModuleAdminController
      */
     public function postEdit(PageEditRequest $request, $page_id)
     {
-        $page = Page::withTrashed()->findOrFail($page_id)->fill($request->only(['name', 'content']));
+        $page = Page::withTrashed()->findOrFail($page_id)->fill($request->only(['name', 'content', 'template']));
         $page->author()->associate(\Auth::user());
         $page->save();
         $page->saveSlug($request->input('slug'));

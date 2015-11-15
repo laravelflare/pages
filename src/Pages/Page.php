@@ -7,11 +7,12 @@ use LaravelFlare\Cms\Slugs\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use LaravelFlare\Cms\Views\ViewableModel;
 use LaravelFlare\Cms\Slugs\SluggableModel;
+use LaravelFlare\Versioning\VersionableModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Page extends Model implements Sluggable, Viewable
 {
-    use SluggableModel, ViewableModel, SoftDeletes;
+    use SluggableModel, ViewableModel, VersionableModel, SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -25,7 +26,7 @@ class Page extends Model implements Sluggable, Viewable
      *
      * @var array
      */
-    protected $fillable = ['name', 'content'];
+    protected $fillable = ['name', 'content', 'template'];
 
     /**
      * The attributes that should be mutated to dates.
