@@ -5,12 +5,13 @@ namespace LaravelFlare\Pages;
 use LaravelFlare\Cms\Views\Viewable;
 use LaravelFlare\Cms\Slugs\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use LaravelFlare\Versioning\Versionable;
 use LaravelFlare\Cms\Views\ViewableModel;
 use LaravelFlare\Cms\Slugs\SluggableModel;
 use LaravelFlare\Versioning\VersionableModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Page extends Model implements Sluggable, Viewable
+class Page extends Model implements Sluggable, Viewable, Versionable
 {
     use SluggableModel, ViewableModel, VersionableModel, SoftDeletes;
 
