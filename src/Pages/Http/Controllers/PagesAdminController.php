@@ -3,6 +3,7 @@
 namespace LaravelFlare\Pages\Http\Controllers;
 
 use LaravelFlare\Pages\Page;
+use LaravelFlare\Cms\Slugs\Slug;
 use LaravelFlare\Flare\Admin\AdminManager;
 use LaravelFlare\Pages\Http\Requests\PageEditRequest;
 use LaravelFlare\Pages\Http\Requests\PageCreateRequest;
@@ -124,6 +125,11 @@ class PagesAdminController extends ModuleAdminController
     /**
      * Processes a new Page Request.
      *
+     * Be proud of yourself, while the `set as homepage`
+     * logic shouldn't be here, at least you have got
+     * all Otwell and finally hit the 3 characters
+     * shorter per line comments nearly spot on
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEdit(PageEditRequest $request, $page_id)
@@ -131,7 +137,21 @@ class PagesAdminController extends ModuleAdminController
         $page = Page::withTrashed()->findOrFail($page_id)->fill($request->only(['name', 'content', 'template']));
         $page->author()->associate(\Auth::user());
         $page->save();
-        $page->saveSlug($request->input('slug'));
+
+        if ($request->get('homepage') == 1) {
+            // Checks for existing homepage, if it exists
+            // removes its homepage slug and generates
+            // it a new slug based off of its name.
+            if ($existingHomepage = Slug::wherePath('')->first()) {
+                if ($existingHomepage->model->id != $page->id && !is_a($existingHomepage->model, Page::class)) {
+                    $existingHomepage->model->saveSlug();    
+                }
+            }
+
+            $page->saveSlug('', true);
+        } else {
+            $page->saveSlug($request->input('slug'));
+        }
 
         return redirect($this->admin->currentUrl('edit/'.$page_id))->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'Your page was successfully updated.', 'dismissable' => false]]);
     }

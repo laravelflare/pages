@@ -23,6 +23,16 @@
         </div>
     </div>
     <div class="box-footer">
-        
+        <div class="form-group">
+            <label>Homepage:</label>
+            <input type="checkbox" id="homepage"
+                name="homepage"
+                value="1"
+                @if($page->slug && $page->slug->path == '') checked="checked" @endif
+            ">
+            <p>
+                Sets page as the homepage and removes its slug.
+            </p>
+        </div>
     </div>
 </div>
