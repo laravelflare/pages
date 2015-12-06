@@ -78,16 +78,4 @@ class Page extends Model implements Sluggable, Viewable, Versionable
             return $this->author->name;
         }
     }
-
-    /**
-     * Provides the Link Accessor.
-     * 
-     * @return string
-     */
-    public function getLinkAttribute()
-    {
-        if ($this->slug) {
-            return url($this->slug);
-        }
-    }
 }

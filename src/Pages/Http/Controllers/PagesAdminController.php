@@ -117,9 +117,9 @@ class PagesAdminController extends ModuleAdminController
      * 
      * @return \Illuminate\Http\Response
      */
-    public function getEdit($page_id)
+    public function getEdit($pageId)
     {
-        return view('flare::admin.pages.edit', ['page' => Page::withTrashed()->findOrFail($page_id)]);
+        return view('flare::admin.pages.edit', ['page' => Page::withTrashed()->findOrFail($pageId)]);
     }
 
     /**
@@ -132,9 +132,9 @@ class PagesAdminController extends ModuleAdminController
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit(PageEditRequest $request, $page_id)
+    public function postEdit(PageEditRequest $request, $pageId)
     {
-        $page = Page::withTrashed()->findOrFail($page_id)->fill($request->only(['name', 'content', 'template']));
+        $page = Page::withTrashed()->findOrFail($pageId)->fill($request->only(['name', 'content', 'template']));
         $page->author()->associate(\Auth::user());
         $page->save();
 
@@ -153,31 +153,31 @@ class PagesAdminController extends ModuleAdminController
             $page->saveSlug($request->input('slug'));
         }
 
-        return redirect($this->admin->currentUrl('edit/'.$page_id))->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'Your page was successfully updated.', 'dismissable' => false]]);
+        return redirect($this->admin->currentUrl('edit/'.$pageId))->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'Your page was successfully updated.', 'dismissable' => false]]);
     }
 
     /**
      * Delete a Page.
      *
-     * @param int $page_id
+     * @param int $pageId
      * 
      * @return \Illuminate\Http\Response
      */
-    public function getDelete($page_id)
+    public function getDelete($pageId)
     {
-        return view('flare::admin.pages.delete', ['page' => Page::withTrashed()->findOrFail($page_id)]);
+        return view('flare::admin.pages.delete', ['page' => Page::withTrashed()->findOrFail($pageId)]);
     }
 
     /**
      * Process Delete Page Request.
      *
-     * @param int $page_id
+     * @param int $pageId
      * 
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postDelete($page_id)
+    public function postDelete($pageId)
     {
-        $page = Page::withTrashed()->findOrFail($page_id);
+        $page = Page::withTrashed()->findOrFail($pageId);
 
         if ($page->trashed()) {
             $page->slug()->delete();
@@ -194,25 +194,25 @@ class PagesAdminController extends ModuleAdminController
     /**
      * Restore a Page.
      *
-     * @param int $page_id
+     * @param int $pageId
      * 
      * @return \Illuminate\Http\Response
      */
-    public function getRestore($page_id)
+    public function getRestore($pageId)
     {
-        return view('flare::admin.pages.restore', ['page' => Page::onlyTrashed()->findOrFail($page_id)]);
+        return view('flare::admin.pages.restore', ['page' => Page::onlyTrashed()->findOrFail($pageId)]);
     }
 
     /**
      * Process Restore Page Request.
      *
-     * @param int $page_id
+     * @param int $pageId
      * 
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postRestore($page_id)
+    public function postRestore($pageId)
     {
-        $page = Page::onlyTrashed()->findOrFail($page_id)->restore();
+        $page = Page::onlyTrashed()->findOrFail($pageId)->restore();
 
         return redirect($this->admin->currentUrl())->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'The page was successfully restored.', 'dismissable' => false]]);
     }
@@ -220,13 +220,13 @@ class PagesAdminController extends ModuleAdminController
     /**
      * Clone a Page.
      *
-     * @param int $page_id
+     * @param int $pageId
      * 
      * @return \Illuminate\Http\Response
      */
-    public function getClone($page_id)
+    public function getClone($pageId)
     {
-        Page::findOrFail($page_id)->replicate()->save();
+        Page::findOrFail($pageId)->replicate()->save();
 
         return redirect($this->admin->currentUrl())->with('notifications_below_header', [['type' => 'success', 'icon' => 'check-circle', 'title' => 'Success!', 'message' => 'The page was successfully cloned.', 'dismissable' => false]]);
     }
