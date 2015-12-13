@@ -6,7 +6,7 @@
         </a>
     </div>
 
-    @if ($pages->hasMorePages())
+    @if ($pages->hasPages())
     <div class="pull-right" style="margin-top: -20px; margin-bottom: -20px;">
         {!! $pages->render() !!}
     </div>
