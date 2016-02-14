@@ -62,7 +62,7 @@ class Page extends Model implements Sluggable, Viewable
      */
     public function author()
     {
-        return $this->belongsTo(config('auth.providers.user.model'), 'author_id');
+        return $this->belongsTo(config('auth.providers.users.model'), 'author_id');
     }
 
     /**
