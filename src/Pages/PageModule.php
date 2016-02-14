@@ -13,19 +13,19 @@ class PageModule extends ModuleAdmin
      *
      * @var string
      */
-    protected static $icon = 'file-o';
+    protected $icon = 'file-o';
 
     /**
      * Title of Admin Section.
      *
      * @var string
      */
-    protected static $title = 'Page';
+    protected $title = 'Page';
 
     /**
      * The Controller to be used by the Pages Module.
      * 
      * @var string
      */
-    protected static $controller = '\LaravelFlare\Pages\Http\Controllers\PagesAdminController';
+    protected $controller = '\LaravelFlare\Pages\Http\Controllers\PagesAdminController';
 }
