@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddPageSoftDeletes extends Migration
+class AddPageTemplateColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -10,7 +10,7 @@ class AddPageSoftDeletes extends Migration
     public function up()
     {
         Schema::table('flare_cms_pages', function ($table) {
-            $table->softDeletes();
+            $table->string('template')->nullable()->after('author_id');
         });
     }
 
@@ -20,7 +20,7 @@ class AddPageSoftDeletes extends Migration
     public function down()
     {
         Schema::table('flare_cms_pages', function ($table) {
-            $table->dropColumn('deleted_at');
+            $table->dropColumn('template');
         });
     }
 }

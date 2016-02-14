@@ -18,14 +18,14 @@ class Page extends Model implements Sluggable, Viewable
      *
      * @var string
      */
-    protected $table = 'cms_pages';
+    protected $table = 'flare_cms_pages';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'content'];
+    protected $fillable = ['name', 'content', 'template'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -40,6 +40,20 @@ class Page extends Model implements Sluggable, Viewable
      * @return string
      */
     protected $view = 'flare::pages.index';
+
+    /**
+     * Page View.
+     * 
+     * @return string
+     */
+    public function view()
+    {   
+        if (!$this->template || !view()->exists($this->template)) {
+            return $this->view;
+        }
+
+        return $this->template;
+    }
 
     /**
      * Page belongs to Author.
@@ -60,18 +74,6 @@ class Page extends Model implements Sluggable, Viewable
     {
         if ($this->author) {
             return $this->author->name;
-        }
-    }
-
-    /**
-     * Provides the Link Accessor.
-     * 
-     * @return string
-     */
-    public function getLinkAttribute()
-    {
-        if ($this->slug) {
-            return url($this->slug);
         }
     }
 }

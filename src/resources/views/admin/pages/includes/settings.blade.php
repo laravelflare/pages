@@ -4,26 +4,35 @@
         <h3 class="box-title">Page Settings</h3>
     </div>
     <div class="box-body">
-        <div class="form-group">
+       {{-- <div class="form-group">
             <label>Page Parent:</label>
-            <select class="form-control">
-                <option>Homepage</option>
-                <option>About Us</option>
-                <option>Portfolio</option>
-                <option>Contact</option>
+            <select class="form-control" name="parent">
+                <option></option>
             </select>
-        </div>
+        </div> --}}
         <div class="form-group">
             <label>Template:</label>
-            <select class="form-control">
-                <option>Default</option>
-                <option>Single Column</option>
-                <option>Left Sidebar</option>
-                <option>Right Sidebar</option>
-            </select>
+            <input type="text" id="template"
+                class="form-control"
+                name="template"
+                placeholder="Page Template (dot notation)"
+                value="{{ old('template', $page->template) }}">
+            {{-- <select class="form-control" name="template">
+                <option></option>
+            </select> --}}
         </div>
     </div>
     <div class="box-footer">
-        
+        <div class="form-group">
+            <label>Homepage:</label>
+            <input type="checkbox" id="homepage"
+                name="homepage"
+                value="1"
+                @if($page->slug && $page->slug->path == '') checked="checked" @endif
+            ">
+            <p>
+                Sets page as the homepage and removes its slug.
+            </p>
+        </div>
     </div>
 </div>

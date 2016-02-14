@@ -9,7 +9,7 @@ class AddNewPageColumns extends Migration
      */
     public function up()
     {
-        Schema::table('cms_pages', function ($table) {
+        Schema::table('flare_cms_pages', function ($table) {
             $table->integer('author_id')->unsigned()->after('content');
         });
     }
@@ -19,7 +19,7 @@ class AddNewPageColumns extends Migration
      */
     public function down()
     {
-        Schema::table('cms_pages', function ($table) {
+        Schema::table('flare_cms_pages', function ($table) {
             $table->dropColumn('author_id');
         });
     }

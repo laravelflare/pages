@@ -11,6 +11,7 @@ class PageServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Migrations
         $this->publishes([
             __DIR__.'/Database/Migrations' => base_path('database/migrations'),
         ]);

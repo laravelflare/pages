@@ -10,7 +10,7 @@
     stopOnFailure="false"
     syntaxCheck="false">
     <testsuites>
-        <testsuite name="Flare CMS Pages Mdoule Test Suite">
+        <testsuite name="Flare CMS Pages Module Test Suite">
             <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>

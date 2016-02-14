@@ -20,9 +20,7 @@
 
         <div class="col-md-3">
             @include('flare::admin.pages.includes.publish')
-            {{--
             @include('flare::admin.pages.includes.settings')
-            --}}
         </div>
     </form>
 </div>

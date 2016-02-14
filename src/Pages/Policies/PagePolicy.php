@@ -14,6 +14,6 @@ class PagePolicy
      */
     public function view($user, $admin)
     {
-        return true;
+        return $user->is_admin;
     }
 }
