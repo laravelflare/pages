@@ -56,22 +56,22 @@
                             View
                         </a>
                         @endif
-                        <a class="btn btn-primary btn-xs" href="{{ $moduleAdmin::currentUrl('edit/'.$page->id) }}">
+                        <a class="btn btn-primary btn-xs" href="{{ $moduleAdmin->currentUrl('edit/'.$page->id) }}">
                             <i class="fa fa-edit"></i>
                             Edit
                         </a>
                         @if ($page->trashed())
-                        <a class="btn btn-info btn-xs" href="{{ $moduleAdmin::currentUrl('restore/'.$page->id) }}">
+                        <a class="btn btn-info btn-xs" href="{{ $moduleAdmin->currentUrl('restore/'.$page->id) }}">
                             <i class="fa fa-undo"></i>
                             Restore
                         </a>
                         @else
-                        <a class="btn btn-warning btn-xs" href="{{ $moduleAdmin::currentUrl('clone/'.$page->id) }}">
+                        <a class="btn btn-warning btn-xs" href="{{ $moduleAdmin->currentUrl('clone/'.$page->id) }}">
                             <i class="fa fa-clone"></i>
                             Clone
                         </a>
                         @endif
-                        <a class="btn btn-danger btn-xs" href="{{ $moduleAdmin::currentUrl('delete/'.$page->id) }}">
+                        <a class="btn btn-danger btn-xs" href="{{ $moduleAdmin->currentUrl('delete/'.$page->id) }}">
                             <i class="fa fa-trash"></i>
                             @if ($page->trashed())
                             Delete

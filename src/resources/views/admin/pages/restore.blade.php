@@ -23,7 +23,7 @@
         </div>
         <div class="box-footer">
             {!! csrf_field() !!}
-            <a href="{{ $moduleAdmin::currentUrl() }}" class="btn btn-default">
+            <a href="{{ $moduleAdmin->currentUrl() }}" class="btn btn-default">
                 Cancel
             </a>
             <button class="btn btn-info" type="submit">

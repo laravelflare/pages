@@ -48,7 +48,7 @@
     <div class="box-footer">
 
         @if ($page->id)
-        <a href="{{ $moduleAdmin::currentUrl('delete/'.$page->id) }}" class="btn btn-danger" value="trash">
+        <a href="{{ $moduleAdmin->currentUrl('delete/'.$page->id) }}" class="btn btn-danger" value="trash">
             <i class="fa fa-trash"></i>
             Trash
         </a>

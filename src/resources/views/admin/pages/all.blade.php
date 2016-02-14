@@ -10,7 +10,7 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="btn-group">
-                        <a href="{{ $moduleAdmin::currentUrl('all') }}" class="btn btn-default btn-flat">
+                        <a href="{{ $moduleAdmin->currentUrl('all') }}" class="btn btn-default btn-flat">
                             With Trashed
                             <span class="badge bg-yellow" style="margin-left: 15px">{{ $totals['with_trashed'] }}</span>
                         </a>
@@ -20,7 +20,7 @@
                         </button>
                         <ul role="menu" class="dropdown-menu">
                             <li>
-                                <a href="{{ $moduleAdmin::currentUrl() }}">
+                                <a href="{{ $moduleAdmin->currentUrl() }}">
                                     <span style="display:inline-block; width: 100px;">
                                         All Pages
                                     </span>
@@ -28,7 +28,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ $moduleAdmin::currentUrl('trashed') }}">
+                                <a href="{{ $moduleAdmin->currentUrl('trashed') }}">
                                     <span style="display:inline-block; width: 100px;">
                                         Trashed Only
                                     </span>
