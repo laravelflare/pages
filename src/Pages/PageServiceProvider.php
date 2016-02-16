@@ -2,7 +2,7 @@
 
 namespace LaravelFlare\Pages;
 
-use Illuminate\Support\ServiceProvider;
+use LaravelFlare\Flare\FlareModuleProvider as ServiceProvider;
 
 class PageServiceProvider extends ServiceProvider
 {
@@ -22,9 +22,6 @@ class PageServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views' => base_path('resources/views/vendor/flare'),
         ]);
 
-        $this->registerBladeOperators();
-
-        $this->registerFlareHelpers();
     }
 
     /**
@@ -33,6 +30,10 @@ class PageServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerServiceProviders();
+
+        $this->registerBladeOperators();
+
+        $this->registerFlareHelpers();
     }
 
     /**
@@ -54,6 +55,6 @@ class PageServiceProvider extends ServiceProvider
      */
     protected function registerFlareHelpers()
     {
-        \Flare::registerHelper('pages', \LaravelFlare\Pages\PageManager::class);
+        $this->flare->registerHelper('pages', \LaravelFlare\Pages\PageManager::class);
     }
 }
