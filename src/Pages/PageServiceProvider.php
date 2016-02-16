@@ -21,7 +21,6 @@ class PageServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../resources/views' => base_path('resources/views/vendor/flare'),
         ]);
-
     }
 
     /**
@@ -29,25 +28,7 @@ class PageServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerServiceProviders();
-
-        $this->registerBladeOperators();
-
         $this->registerFlareHelpers();
-    }
-
-    /**
-     * Register Service Providers.
-     */
-    protected function registerServiceProviders()
-    {
-    }
-
-    /**
-     * Register Blade Operators.
-     */
-    protected function registerBladeOperators()
-    {
     }
 
     /**
