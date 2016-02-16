@@ -23,6 +23,8 @@ class PageServiceProvider extends ServiceProvider
         ]);
 
         $this->registerBladeOperators();
+
+        $this->registerFlareHelpers();
     }
 
     /**
@@ -45,5 +47,13 @@ class PageServiceProvider extends ServiceProvider
      */
     protected function registerBladeOperators()
     {
+    }
+
+    /**
+     * Register Flare Helper for Pages.
+     */
+    protected function registerFlareHelpers()
+    {
+        \Flare::registerHelper('pages', \LaravelFlare\Pages\PageManager::class);
     }
 }
