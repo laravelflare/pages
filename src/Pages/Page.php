@@ -47,7 +47,7 @@ class Page extends Model implements Sluggable, Viewable
      * @return string
      */
     public function view()
-    {   
+    {
         if (!$this->template || !view()->exists($this->template)) {
             return $this->view;
         }

@@ -2,8 +2,6 @@
 
 namespace LaravelFlare\Pages;
 
-use LaravelFlare\Pages\Page;
-
 class PageManager
 {
     /**
@@ -12,8 +10,8 @@ class PageManager
      * Allows us to create a newQuery when attempting to access
      * data which the Manager Class does not have methods for.
      *
-     * @param  string  $method
-     * @param  array  $parameters
+     * @param string $method
+     * @param array  $parameters
      * 
      * @return mixed
      */
@@ -23,7 +21,7 @@ class PageManager
             return call_user_func_array([$this, $method], $parameters);
         }
 
-        $query = (new Page)->newQuery();
+        $query = (new Page())->newQuery();
 
         return call_user_func_array([$query, $method], $parameters);
     }

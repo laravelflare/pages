@@ -144,7 +144,7 @@ class PagesAdminController extends ModuleAdminController
             // it a new slug based off of its name.
             if ($existingHomepage = Slug::wherePath('')->first()) {
                 if ($existingHomepage->model->id != $page->id && !is_a($existingHomepage->model, Page::class)) {
-                    $existingHomepage->model->saveSlug();    
+                    $existingHomepage->model->saveSlug();
                 }
             }
 
