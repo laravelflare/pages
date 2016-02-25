@@ -62,7 +62,7 @@ class Page extends Model implements Sluggable, Viewable
      */
     public function author()
     {
-        return $this->belongsTo(config('auth.providers.users.model'), 'author_id');
+        return $this->belongsTo(config('auth.model') ? config('auth.model') : \Auth::getProvider()->getModel(), 'author_id');
     }
 
     /**
@@ -75,5 +75,15 @@ class Page extends Model implements Sluggable, Viewable
         if ($this->author) {
             return $this->author->name;
         }
+    }
+
+    /**
+     * Return the Content as HTML String
+     * 
+     * @return string
+     */
+    public function getContentAttribute()
+    {
+        return new HtmlString($this->attributes['content']);
     }
 }
