@@ -2,6 +2,7 @@
 @section('page_title', 'Pages')
 @section('content')
 
+<<<<<<< Updated upstream
     <div class="">
         <div class="row">
             <div class="col-md-12">
@@ -19,17 +20,13 @@
                             <ul role="menu" class="dropdown-menu">
                                 <li>
                                     <a href="{{ $moduleAdmin->currentUrl() }}">
-                                        <span style="display:inline-block; width: 100px;">
-                                            All Pages
-                                        </span>
+                                        All Pages
                                         <span class="badge bg-green">{{ $totals['all'] }}</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ $moduleAdmin->currentUrl('all') }}">
-                                        <span style="display:inline-block; width: 100px;">
-                                            With Trashed
-                                        </span>
+                                        With Trashed
                                         <span class="badge bg-yellow">{{ $totals['with_trashed'] }}</span>
                                     </a>
                                 </li>
@@ -40,7 +37,6 @@
                     @include('flare::admin.pages.includes.page-list')
                     
                     @include('flare::admin.pages.includes.page-list-footer')
-
                 </div>
             </div>
         </div>

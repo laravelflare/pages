@@ -19,17 +19,13 @@
                             <ul role="menu" class="dropdown-menu">
                                 <li>
                                     <a href="{{ $moduleAdmin->currentUrl() }}">
-                                        <span style="display:inline-block; width: 100px;">
-                                            All Pages
-                                        </span>
+                                        All Pages
                                         <span class="badge bg-green">{{ $totals['all'] }}</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ $moduleAdmin->currentUrl('trashed') }}">
-                                        <span style="display:inline-block; width: 100px;">
-                                            Trashed Only
-                                        </span>
+                                        Trashed Only
                                         <span class="badge bg-red">{{ $totals['only_trashed'] }}</span>
                                     </a>
                                 </li>
@@ -40,7 +36,6 @@
                     @include('flare::admin.pages.includes.page-list')
                     
                     @include('flare::admin.pages.includes.page-list-footer')
-
                 </div>
             </div>
         </div>
