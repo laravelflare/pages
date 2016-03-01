@@ -2,6 +2,7 @@
 
 namespace LaravelFlare\Pages;
 
+use Illuminate\Support\HtmlString;
 use LaravelFlare\Cms\Views\Viewable;
 use LaravelFlare\Cms\Slugs\Sluggable;
 use Illuminate\Database\Eloquent\Model;
