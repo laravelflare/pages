@@ -2,7 +2,6 @@
 @section('page_title', 'Pages')
 @section('content')
 
-<<<<<<< Updated upstream
     <div class="">
         <div class="row">
             <div class="col-md-12">
