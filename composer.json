@@ -18,8 +18,8 @@
         }
     ],
     "require": {
-        "laravelflare/flare": "dev-master",
-        "laravelflare/cms": "dev-master"
+        "laravelflare/flare": "^0.9",
+        "laravelflare/cms": "^0.1"
     },
     "require-dev": {
         "mockery/mockery": "~0.9.1",
