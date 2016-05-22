@@ -3,12 +3,16 @@
 namespace LaravelFlare\Pages;
 
 use Illuminate\Support\HtmlString;
+use LaravelFlare\Cms\Views\Viewable;
+use LaravelFlare\Cms\Slugs\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use LaravelFlare\Cms\Views\ViewableModel;
+use LaravelFlare\Cms\Slugs\SluggableModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Page extends Model
+class Page extends Model implements Sluggable, Viewable
 {
-    use SoftDeletes;
+    use SluggableModel, ViewableModel, SoftDeletes;
 
     /**
      * The database table used by the model.
@@ -22,11 +26,7 @@ class Page extends Model
      *
      * @var array
      */
-    protected $fillable = [ 
-                            'name',
-                            'content',
-                            'template'
-                        ];
+    protected $fillable = ['name', 'content', 'template'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -40,43 +40,43 @@ class Page extends Model
      *
      * @return string
      */
-    // protected $view = 'flare::pages.index';
+    protected $view = 'flare::pages.index';
 
-    // /**
-    //  * Page View.
-    //  * 
-    //  * @return string
-    //  */
-    // public function view()
-    // {
-    //     if (!$this->template || !view()->exists($this->template)) {
-    //         return $this->view;
-    //     }
+    /**
+     * Page View.
+     * 
+     * @return string
+     */
+    public function view()
+    {
+        if (!$this->template || !view()->exists($this->template)) {
+            return $this->view;
+        }
 
-    //     return $this->template;
-    // }
+        return $this->template;
+    }
 
-    // /**
-    //  * Page belongs to Author.
-    //  * 
-    //  * @return
-    //  */
-    // public function author()
-    // {
-    //     return $this->belongsTo(config('auth.model') ? config('auth.model') : \Auth::getProvider()->getModel(), 'author_id');
-    // }
+    /**
+     * Page belongs to Author.
+     * 
+     * @return
+     */
+    public function author()
+    {
+        return $this->belongsTo(config('auth.model') ? config('auth.model') : \Auth::getProvider()->getModel(), 'author_id');
+    }
 
-    // /**
-    //  * Provides the Author Name Accessor.
-    //  * 
-    //  * @return string
-    //  */
-    // public function getAuthorNameAttribute()
-    // {
-    //     if ($this->author) {
-    //         return $this->author->name;
-    //     }
-    // }
+    /**
+     * Provides the Author Name Accessor.
+     * 
+     * @return string
+     */
+    public function getAuthorNameAttribute()
+    {
+        if ($this->author) {
+            return $this->author->name;
+        }
+    }
 
     /**
      * Return the Content as HTML String
