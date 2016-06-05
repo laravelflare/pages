@@ -84,7 +84,11 @@ class Page extends Model implements Sluggable, Viewable
      * @return string
      */
     public function getContentAttribute()
-    {
-        return new HtmlString($this->attributes['content']);
+    {        
+        return new HtmlString(
+            isset($this->attributes['content']) ? 
+            $this->attributes['content'] :
+            null
+        );
     }
 }
